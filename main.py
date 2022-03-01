@@ -57,20 +57,20 @@ def take_input(player_token):
     draw_board()
     valid = False
     while not valid:
-        player_answer = input("Куда поставим " + player_token+"? ")
+        player_answer = input(player_token + "is walking now")
         try:
             player_answer = int(player_answer[:1])
         except:
-            print ("Некорректный ввод. Вы уверены, что ввели число?")
+            print ("Invalid input")
             continue
         if player_answer >= 1 and player_answer <= 9:
             if (str(board[player_answer-1]) not in "XO"):
                 board[player_answer-1] = player_token
                 valid = True
             else:
-                print (f"Клеточка {player_answer} уже занята")
+                print (f"{player_answer} is already here!")
         else:
-            print ("Некорректный ввод. Введите число от 1 до 9 чтобы походить.")
+            print ("Invalid input")
 
 def check_win(board):
     draw_board()
@@ -95,12 +95,12 @@ def main(board):
         if counter > 4:
             tmp = check_win(board)
             if tmp:
-                print (f"{tmp}, вы выиграли!")
+                print (f"{tmp} won")
                 win = True
                 winner()
                 break
         if counter == 9:
-            print ("Ничья!")
+            print ("draw!")
             break
     
 
